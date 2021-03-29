@@ -1,0 +1,75 @@
+---
+title: "Computergestützte Statistische Datenanalyse"
+author: "Dr. Wasilios Hariskos"
+date: ""
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Veranstaltungen
+
+https://moodle.hwr-berlin.de/fb2-stundenplan/stundenplan.php
+
++ Fr, 26.03.2021 (13:00 - 14:30)
++ Mo, 29.03.2021 (14:00 - 15:30)
++ Di, 30.03.2021 (14:00 - 15:30)
++ Di, 06.04.2021 (14:00 - 15:30)
++ Fr, 09.04.2021 (14:00 - 15:30)
++ Mo, 12.04.2021 (14:00 - 15:30)
++ Di, 13.04.2021 (14:00 - 15:30) [wird verschoben]
++ Fr, 16.04.2021 (14:00 - 15:30)
++ Mo, 19.04.2021 (14:00 - 15:30)
++ Fr, 23.04.2021 (14:00 - 15:30)
++ Fr, 26.04.2021 (14:00 - 14:45)
+
+Die Veranstaltungen finden über Big Blue Button statt. Den Link finden Sie im Moodle.
+
+# Modulaufbau
+
++ 22 Std. seminarischer Unterricht
++ 26 Std. Selbststudium
++ 12 Std. betriebliche Erfahrung
+
+# Studienleistung
+
+Die Studienleistung zur aktiven Teilnahme ist das Bestehen der Klausur, welche am 26.04.2021 von 14:45 bis 15:30 stattfindet.
+
+Darüber hinaus machen Sie im Rahmen ihres Selbststudiums Hausaufgaben im Umfang von 10 Stunden, in denen Sie das elernte Wissen aus der Vorlesung praktisch anwenden. Dazu melden Sie sich bitte bei [Datacamp](https://www.datacamp.com) an und absolvieren Sie vor der Klausur alle der zwei gelisteten interaktiven Onlinekurse:
+
++ [Introduction to R](https://learn.datacamp.com/courses/free-introduction-to-r)
++ [Introduction to the Tidyverse](https://learn.datacamp.com/courses/introduction-to-the-tidyverse)
+
+Jeder Kurs dauert 4 Stunden, zusammen also 8 Stunden strukturiertes Selbststudium. Die übrigen 18 Stunden Selbststudium können Sie nutzen, um die Vorlesung vor- und nachzubereiten. 
+
+Damit Sie alle Kurse auf Datacamp frei nutzen können, habe ich einen kostenfreien Zugang für die Lehre beantragt. Sobald dieser freigeben wird, schicke ich Ihnen eine Einladung per E-Mail. So können Sie - wenn Sie mögen - alle Datacampkurse (nicht nur die zwei Kurse oben) kostenfrei für 6 Monate nutzen.
+
+Gut zu wissen: Wenn Sie einen Kurs auf Datacamp abschließen bekommen Sie als Bonus ein Zertifikat, das Sie ihrer Bewerbung bei einem Unternehmen anhängen oder auf LinkedIn hochladen können.
+
+# Links
++ [Kursseite](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/00_kursseite.html)
++ [Github Verzeichnis (Repository)](https://github.com/wasilios-hariskos/csd-berlin20)
++ [Programmiersprache R und Benutzeroberfläche R Studio installieren](https://rstudio.com/products/rstudio/download)
+<!-- + [Git für die Version Control (zur Zusammenarbeit an einem Projekt) installieren](https://git-scm.com/downloads) -->
++ [Optional: Weitere Infos zu R, RStudio und Git](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/)
+<!-- + [Mein erstes Skript](https://raw.githubusercontent.com/wasilios-hariskos/csd-berlin20/master/01-mein-erstes-skript.R) -->
+
+# Folien
++ [Überblick und Lernziele](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/01_kursueberblick.html)
+<!-- + [Programmieren](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/01_programmingR_base.html) -->
++ [Datentransformation](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/02_dataTransformation_dplyr.html)
+<!-- + [Datenvisualisierung](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/03_dataVisualization_ggplot2.html) -->
+<!-- + [Explorative Datenanalyse](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/04_exploratoryDataAnalysis.html) -->
+<!-- + [Regressionsanalyse](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/05_linear_regression.html) -->
+<!-- + Extras: [BBWorld](https://github.com/wasilios-hariskos/csd-berlin20/blob/master/BBworld.R) -->
+
+<!-- Folien werden vor dem Seminar zur Verfügung gestellt. Konzentrieren Sie sich auf vor allem auf die Bearbeitung der Hausaufgaben auf Datacamp und bereiten Sie bitte nach dem Seminar nach Bedarf die Inhalte der Folien nach. -->
+
+# Literatur für das Selbststudium
+
++ [R for Data Science](r4ds.had.co.nz)
++ [Introduction to Econometrics with R](https://www.econometrics-with-r.org/)
++ [Discovering Statistics Using R](https://www.amazon.de/Discovering-Statistics-Using-Andy-Field/dp/1446200469)

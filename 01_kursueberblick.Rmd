@@ -1,0 +1,282 @@
+---
+title: "Computergestützte Statistische Datenanalyse mit R"
+author: "Dr. Wasilios Hariskos"
+date: ""
+output: 
+  slidy_presentation:
+    footer: "Computergestützte Statistische Datenanalyse in R"
+    incremental: false
+    slide_level: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)
+library(dplyr)
+library(ggplot2)
+library(gapminder)
+```
+
+
+# Die Programmiersprache R ist beliebt
+
+```{r, echo=FALSE, fig.cap="Quelle: http://r4stats.com/articles/popularity", out.width='40%', fig.align="center"}
+knitr::include_graphics("diagrams/data-science-jobs.png")
+```
+
+<!-- # R Studio -->
+
+<!-- ```{r, echo=FALSE, fig.cap="", out.width='80%', fig.align="center"} -->
+<!-- knitr::include_graphics("figures/gruppenarbeit.gif") -->
+<!-- ``` -->
+
+# Lernziele
+
+```{r, echo=FALSE, fig.cap="Quelle: https://r4ds.had.co.nz/introduction.html", out.width='60%', fig.align="center", fig.}
+knitr::include_graphics("diagrams/data-science.png")
+```
+
++ Daten *importieren* und *aufräumen* (jede Zeile ist eine Beobachtung und jede Spalte eine Variable)
++ Daten *transformieren* (Beobachtungen auswählen, Variablen hinzufügen, numerische Zusammenfassungen)
++ Daten *visualisieren* (um diese besser zu verstehen und interessante Fragestellungen zu finden)
++ Daten *modellieren* (um Fragen wissenschatlich zu beantworten)
++ Daten *kommunizieren* (in schriflichen Arbeiten oder in einer Präsentation)
++ Programmieren lernen, um besser Daten computergestützt statistisch auswerten zu können
+
+
+# Kernmodul: Programmieren
+
++ Vektoren
++ Matrizen
++ Faktoren
++ Datensätze
++ Listen
++ Operatoren
++ Bedingte Anweisungen
++ Schleifen
++ Funktionen
+
+```{r eval=FALSE, fig.align="center", fig.cap="Quelle: https://r4ds.had.co.nz/program-intro.html", include=FALSE, out.width='60%'}
+knitr::include_graphics("diagrams/data-science-program.png")
+```
+
+
+# Aufgabe: Programmieren
+
++ Anton und Berta haben beide die Mathe und Statistik Klausuren bestanden. 
++ Anton hat in Mathe eine 2 bekommen und in Statistik eine 3. 
++ Berta hat in Mathe eine 4 bekommen und in Statistik eine 1. 
++ Erstellen Sie einen Datensatz mit den Variablen Name, Klausur und Note.
+
+#
+
+```{r}
+noten_vektor <- c(2, 3, 4, 1)
+print(noten_vektor)
+```
+
+```{r}
+namen_vektor <- c("Anton", "Anton", "Berta", "Berta")
+print(namen_vektor)
+
+```
+
+```{r}
+klausuren_faktor <- factor(x = c("Mathe", "Statistik", "Mathe", "Statistik"))
+print(klausuren_faktor)
+```
+
+
+#
+
+```{r}
+klausur_daten <- data.frame(Name = namen_vektor, 
+                            Klausur = klausuren_faktor, 
+                            Note = noten_vektor)
+print(klausur_daten)
+```
+
+```{r eval=FALSE, include=FALSE}
+klausur_daten %>%
+   group_by(Klausur) %>%
+   summarize(Notendurchschnitt = mean(Note),
+             Standardabweichung = sd(Note))
+```
+
+
+<!-- # Zweidimensionale Matrizen -->
+
+<!-- ```{r example_matrix} -->
+<!-- noten_matrize <- matrix(data = noten_vektor, -->
+<!--                         nrow = 2, -->
+<!--                         byrow = TRUE) -->
+
+<!-- rownames(noten_matrize) <- c("Anton", "Berta") -->
+<!-- colnames(noten_matrize) <- c("Mathe-Klausur", "Statistik-Klausur") -->
+
+<!-- print(noten_matrize) -->
+<!-- ``` -->
+
+
+<!-- # Ausblick: Datenanalyse -->
+
+<!-- ```{r} -->
+<!-- library(tidyverse) -->
+
+<!-- klausur_daten %>%  -->
+<!--   group_by(Geschlecht) %>%  -->
+<!--   summarize(Notendurchschnitt = mean(Note), -->
+<!--             Standardabweichung = sd(Note)) -->
+
+<!-- ``` -->
+
+<!-- # Gruppenarbeit: Erstes Skript ausführen -->
+
+<!-- ```{r group_work, echo=FALSE, fig.cap="", out.width='80%', fig.align="center"} -->
+<!-- knitr::include_graphics("figures/gruppenarbeit.gif") -->
+<!-- ``` -->
+
+# Vertiefung: Programmieren
+
+- Matrizen `matrix()` und Listen `list()`
+- Operatoren
+  - mathematische `+  -  *  /  ^` 
+  - vergleichend `==  !=  <  >=` 
+  - logische `!  &  |  xor()`
+- Bedingte Anweisungen (If Statements)
+  - `if (condition){Do something}`
+  - `if (condition){Do smth} else {Do smth}`
+  - `if (condition){Do smth} ifelse (condition) {Do smth} else {Do smth}`
+- Schleifen
+  - For Loop `for (variable in sequence){Do smth}`
+  - While Loop `while (condition){Do smth}`
+- Funktionen `function_name <- function(var){Do smth; return(new_variable)}`
+
+<!-- # Selbststudium: Schummelzettel studieren -->
+
+<!-- # Hausaufgaben: Datacamp Kurs abschließen -->
+
+# Kernmodul: Datenexploration
+
+```{r, echo=FALSE, fig.cap="Quelle: https://r4ds.had.co.nz/explore-intro.html", out.width='60%', fig.align="center"}
+knitr::include_graphics("diagrams/data-science-explore.png")
+```
+
+# Ein makroökonomischer Datensatz
+
+```{r}
+print(gapminder)
+```
+
+# Funktionen für die Datentransformation
+
+- Zur Datentransformation nutzen wir das Paket `dplyr`
+- Es beinhaltet folgende Funktionen (oder Verben)
+  + `mutate()` fügt eine Variable als Spalte hinzu oder ersetzt eine bestehende Variable
+  + `select()` wählt eine Variable aus
+  + `filter()` filtert Beobachtungen (Zeilen) anhand von Kriterien
+  + `summarize()` erstellt numerische Zusammenfassungen
+  + `arrange()` sortiert den Datensatz anhand einer Variable
++ `group_by()` erlaubt Daten nach Gruppen zu manipulieren 
++ Selbststudium: `vignette("dplyr")` durchlesen   
+
+# Aufgabe: Datentransformation
+
++ Berechnen Sie den Länderdurchschnitt der Lebenserwartung bei Geburt
+  + gruppiert nach Kontinenten und 
+  + den Jahren 1952 und 2007. 
+
++ Interpretieren Sie die numerische Zusammenfassung.
+
+```{r}
+gapminder %>% 
+  filter(year %in% c(1952, 2007)) %>% 
+  group_by(continent, year) %>% 
+  summarize(avgLifeExp = mean(lifeExp))
+```
+
+# Aufgabe: Datenvisualisierung
+
++ Visualisieren Sie den Gapminder-Datensatz.
++ Erstellen Sie für jedes Jahr ein Streudiagramm, indem Sie 
+  + Durschnittseinkommen auf die Dimension (Ästhetik) x-Achse abbilden,
+  + Lebenserwartung auf die y-Achse abbilden,
+  + Kontinent auf Farbe der Punkte abbilden und
+  + Ländergröße auf Größe der Punkte.
++ Interpretieren Sie die Grafik.
+
+```{r eval=FALSE, include=TRUE}
+ggplot(data = gapminder) +
+  geom_point(mapping = aes(x = gdpPercap,
+                           y = lifeExp,
+                           color = continent,
+                           size = pop)) +
+  facet_wrap(facets = ~year) +
+  scale_x_log10()
+```
+
+# 
+
+```{r echo=FALSE, out.width='70%', fig.align="center"}
+ggplot(data = gapminder) +
+  geom_point(mapping = aes(x = gdpPercap,
+                           y = lifeExp,
+                           color = continent,
+                           size = pop)) +
+  facet_wrap(facets = ~year) +
+  scale_x_log10()
+```
+
+<!-- # Hausaufgaben: Datacamp -->
+
+# Kernmodul: Datenmodellierung
+
+```{r, echo=FALSE, fig.cap="Quelle: https://r4ds.had.co.nz/model-intro.html", out.width='60%', fig.align="center"}
+knitr::include_graphics("diagrams/data-science-model.png")
+```
+
+# Beispiel: Datenmodellierung
+
+```{r echo=FALSE, out.width="60%", fig.align="center"}
+ggplot(data = filter(gapminder, continent == "Europe"),
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = FALSE) +
+  facet_wrap(facets = ~year) +
+  scale_x_log10() +
+  ggtitle("Europa") 
+```
+
+<!-- # Hausaufgaben: Datacamp -->
+
+
+<!-- # Funktionen -->
+
+<!-- ```{r} -->
+<!-- mean(noten_vektor) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- mittelwert <- function(x){ -->
+<!--   summe <- sum(noten_vektor) -->
+<!--   anzahl <- length(noten_vektor) -->
+<!--   return(summe / anzahl) -->
+<!-- } -->
+
+<!-- mittelwert(noten_vektor) -->
+<!-- ``` -->
+
+
+
+<!-- # Netzbasierte Versionsverwaltung -->
+
+<!-- - Alle Kursmaterialien sind frei zugänglich und befinden sich in diesem [Github Repositorium](https://github.com/wasilios-hariskos/csd-berlin20). -->
+<!-- - Github ist ein Internetdienst für die Versionsverwaltung Git. -->
+<!-- - Github ist sehr beliebt bei Wissenschaftlern und Programmierern und erleichtert die kollaborative Datenanalyse. -->
+<!-- - Buchkapitel [Github and Git](https://r-pkgs.org/git.html) aus dem Buch [R Packages](https://r-pkgs.org/) -->
+<!-- - Buch [Happy Git with R](https://happygitwithr.com/) -->
+<!-- - Wissenschaftlicher Artikel [A Quick Introduction to Version Control with Git and GitHub](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668) -->
+<!-- - YouTube Video [An Introduction to Git and GitHub](https://www.youtube.com/watch?v=MJUJ4wbFm_A) -->
