@@ -38,7 +38,7 @@ Die Veranstaltungen finden über Big Blue Button statt. Den Link finden Sie im M
 
 Die Studienleistung zur aktiven Teilnahme ist das Bestehen der Klausur, welche am 26.04.2021 von 14:45 bis 15:30 stattfindet.
 
-Darüber hinaus machen Sie im Rahmen ihres Selbststudiums Hausaufgaben im Umfang von 10 Stunden, in denen Sie das elernte Wissen aus der Vorlesung praktisch anwenden. Dazu melden Sie sich bitte bei [Datacamp](https://www.datacamp.com) an und absolvieren Sie vor der Klausur alle der zwei gelisteten interaktiven Onlinekurse:
+Darüber hinaus machen Sie im Rahmen ihres Selbststudiums Hausaufgaben im Umfang von 8 Stunden, in denen Sie das elernte Wissen aus der Vorlesung praktisch anwenden. Dazu melden Sie sich bitte bei [Datacamp](https://www.datacamp.com) an und absolvieren Sie vor der Klausur alle der zwei gelisteten interaktiven Onlinekurse:
 
 + [Introduction to R](https://learn.datacamp.com/courses/free-introduction-to-r)
 + [Introduction to the Tidyverse](https://learn.datacamp.com/courses/introduction-to-the-tidyverse)
