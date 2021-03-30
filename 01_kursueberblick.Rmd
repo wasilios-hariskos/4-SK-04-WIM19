@@ -1,12 +1,14 @@
 ---
 title: "Computergestützte Statistische Datenanalyse mit R"
 author: "Dr. Wasilios Hariskos"
-date: ""
-output: 
+date: ''
+output:
   slidy_presentation:
-    footer: "Computergestützte Statistische Datenanalyse in R"
-    incremental: false
+    footer: Computergestützte Statistische Datenanalyse in R
+    incremental: no
     slide_level: 1
+  beamer_presentation:
+    incremental: no
 ---
 
 ```{r setup, include=FALSE}

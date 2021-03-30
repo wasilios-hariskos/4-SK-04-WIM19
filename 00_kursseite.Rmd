@@ -51,7 +51,7 @@ Gut zu wissen: Wenn Sie einen Kurs auf Datacamp abschließen bekommen Sie als Bo
 
 # Links
 + [Kursseite](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/00_kursseite.html)
-+ [Github Verzeichnis (Repository)](https://github.com/wasilios-hariskos/csd-berlin20)
++ [Github Verzeichnis (Repository)](https://github.com/wasilios-hariskos/4-SK-04-WIM19)
 + [Programmiersprache R und Benutzeroberfläche R Studio installieren](https://rstudio.com/products/rstudio/download)
 <!-- + [Git für die Version Control (zur Zusammenarbeit an einem Projekt) installieren](https://git-scm.com/downloads) -->
 + [Optional: Weitere Infos zu R, RStudio und Git](https://www.geo.uzh.ch/microsite/reproducible_research/post/rr-rstudio-git/)
