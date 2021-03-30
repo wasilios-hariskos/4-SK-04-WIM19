@@ -23,7 +23,7 @@ gapminder
 In diesem Modul werden wir den Datensatz gapminder benutzen, welcher demographische Länderdaten enthält. Wenn Sie
 `?gapminder` in die Konsole eingeben, können Sie mehr über diesen Datensatz herausfinden. Bitte beachten Sie, dass der gapminder Datensatz als tibble abgespeichert ist, eine moderne Form des traditionellen data frames. Mit `?tibble` können Sie mehr über tibbles herausfinden. 
 
-# Das dplyr Packet instalieren und laden
+# Das dplyr Packet installieren und laden
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 # install.packages("dplyr")
