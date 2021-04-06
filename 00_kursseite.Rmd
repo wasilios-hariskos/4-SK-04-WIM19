@@ -61,7 +61,7 @@ Gut zu wissen: Wenn Sie einen Kurs auf Datacamp abschließen bekommen Sie als Bo
 + [Überblick und Lernziele](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/01_kursueberblick.html)
 <!-- + [Programmieren](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/01_programmingR_base.html) -->
 + [Datentransformation](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/02_dataTransformation_dplyr.html)
-<!-- + [Datenvisualisierung](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/03_dataVisualization_ggplot2.html) -->
++ [Datenvisualisierung](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/4-SK-04-WIM19/blob/master/03_dataVisualization_ggplot2.html)
 <!-- + [Explorative Datenanalyse](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/04_exploratoryDataAnalysis.html) -->
 <!-- + [Regressionsanalyse](https://htmlpreview.github.io/?https://github.com/wasilios-hariskos/csd-berlin20/blob/master/05_linear_regression.html) -->
 <!-- + Extras: [BBWorld](https://github.com/wasilios-hariskos/csd-berlin20/blob/master/BBworld.R) -->
