@@ -196,19 +196,93 @@ ggplot(data = gapminder_1997) +
 # Boxplot geom_boxplot() ----
 ggplot(data = gapminder_1997) +
   geom_boxplot(mapping = aes(x = continent,
-                            y = lifeExp,
-                            color = continent))
+                             y = lifeExp,
+                             color = continent))
 
 # Challenges: Grafische Benutzeroberfläche R Commander----
 ## 1: Installieren und laden des R Commanders----
-install.packages("Rcmdr") # nach installation mit # auskommentieren
+# install.packages("Rcmdr") # nach der Installation mit # auskommentieren
+# Wenn der R Commander versehentlich geschlossen wird, dann Session neustarten und laden
 library(Rcmdr)
 ## 2: Laden der Datendatei "gapminderData1997.csv" (siehe Moodle)----
-## 3: Auswählen der aktiven Datenmatrix "gapminder_1997"----
-## 4: Erstellen einer deskriptiven Statistik der Datenmatrix
-## 5: Berechnung des Länderdurchschnitts der Lebenserwartung für jeden Kontinenten
-## 6: Berechnung der Korrelation von Lebenserwartung und Einkommen
-## 7: Ein Histogramm erstellen
-## 8: Ein Streudiagramm erstellen
-## 9: Ein Balkendiagramm erstellen
-## 10: Einen Boxplot erstellen
+Dataset <- 
+  read.table(file = "C:/Users/hariskos/Documents/R/4-SK-04-WIM19/gapminderData1997.csv",
+             header = TRUE, 
+             stringsAsFactors = TRUE, 
+             sep = ",", 
+             na.strings = "NA", 
+             dec = ".", 
+             strip.white = TRUE)
+## 3: Erstellen einer deskriptiven Statistik der Datenmatrix "Dataset"
+summary(Dataset)
+## 4: Berechnung des Länderdurchschnitts der Lebenserwartung für jeden Kontinent
+### Deskriptive Statistiken >> Tabelle mit Statistiken
+Tapply(formula = lifeExp ~ continent, 
+       fun = mean, 
+       na.action = na.omit, 
+       data = Dataset) # mean by groups
+# Tidyverse Methode
+Dataset %>% 
+  group_by(continent) %>% 
+  summarize(mean(lifeExp))
+## 5: Berechnung der Korrelation von Lebenserwartung und Einkommen
+### Exkurs: Grafische Veranschaulichung
+ggplot(data = Dataset,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = FALSE)
+### Berechnung mit R Commander
+### Deskriptive Statistiken >> Korrelationsmatrix
+cor(Dataset[,c("gdpPercap","lifeExp")], use = "complete")
+
+### Exkurs: Perfekte Korrelation
+### Exkurs: Grafische Veranschaulichung einer Korrelation von 1
+ggplot(data = Dataset,
+       mapping = aes(x = gdpPercap,
+                     y = gdpPercap)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = FALSE)
+
+### Exkurs: Grafische Veranschaulichung einer Korrelation von 1
+ggplot(data = Dataset,
+       mapping = aes(x = lifeExp,
+                     y = pop)) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se = FALSE)
+
+## 6: Ein Histogramm erstellen (Häufigkeitsverteilung)
+### Lebenserwartung
+with(Dataset, Hist(lifeExp, scale="frequency", breaks="Sturges", 
+                   col="darkgray"))
+### Populationsgröße
+with(Dataset, Hist(pop, scale="frequency", breaks="Sturges", 
+                   col="darkgray"))
+### Einkommen
+with(Dataset, Hist(gdpPercap, scale="frequency", breaks="Sturges", 
+                   col="darkgray"))
+### Verteilung des Einkommens gruppiert nach Kontinenten
+with(Dataset, Hist(gdpPercap, groups=continent, scale="frequency", 
+                   breaks="Sturges", col="darkgray"))
+### Tidyverse-Methode (wird nachgeliefert)
+ggplot(data = Dataset) +
+  geom_histogram(mapping = aes(x = gdpPercap),
+                 binwidth = 5) +
+  facet_wrap(facets = ~continent)
+## 7: Ein Streudiagramm erstellen
+### Einkommen versus Lebenserwartung
+scatterplot(lifeExp~gdpPercap, regLine=FALSE, smooth=FALSE, boxplots=FALSE, 
+            data=Dataset)
+### Einkommen versus Lebenserwartung für jeden Kontinenten
+scatterplot(lifeExp~gdpPercap | continent, 
+            regLine=FALSE, smooth=FALSE, boxplots=FALSE, 
+            by.groups=TRUE, data=Dataset)
+## 8: Ein Balkendiagramm erstellen
+with(Dataset, Barplot(continent, xlab="continent", 
+                      ylab="Frequency", label.bars=TRUE))
+## 9: Einen Boxplot erstellen
+Boxplot(lifeExp~continent, data=Dataset, 
+        id=list(method="y"))
