@@ -9,7 +9,7 @@
 
 # Pakete laden ----
 library(gapminder) # Datensatz
-library(dplyr) # data plyr / Datenzange
+library(dplyr) # data plyr / Datenzange / Pipe Operator %>% ist in diesem Paket
 library(ggplot2)
 
 # Den Datensatz erkunden ----
@@ -200,11 +200,11 @@ ggplot(data = gapminder_1997) +
                              color = continent))
 
 # Challenges: Grafische Benutzeroberfläche R Commander----
-## 1: Installieren und laden des R Commanders----
+## 1: Installieren und laden des R Commanders
 # install.packages("Rcmdr") # nach der Installation mit # auskommentieren
 # Wenn der R Commander versehentlich geschlossen wird, dann Session neustarten und laden
 library(Rcmdr)
-## 2: Laden der Datendatei "gapminderData1997.csv" (siehe Moodle)----
+## 2: Laden der Datendatei "gapminderData1997.csv" (siehe Moodle)
 Dataset <- 
   read.table(file = "C:/Users/hariskos/Documents/R/4-SK-04-WIM19/gapminderData1997.csv",
              header = TRUE, 
@@ -286,3 +286,68 @@ with(Dataset, Barplot(continent, xlab="continent",
 ## 9: Einen Boxplot erstellen
 Boxplot(lifeExp~continent, data=Dataset, 
         id=list(method="y"))
+# Vertiefung: Funktionen ----
+## f(x, y, z), wobei f die Funktion ist sind x, y, z sind Inputs oder Argumente
+## mean(x, trim = 0, na.rm = FALSE)
+## Was macht der Pipe Operator x %>% f(y, z) <-> f(x, y, z)
+### Hilfefunktion nutzen
+help(mean)
+help(NA)
+### Mittelwert
+noten <- c(2, 5, 1, 1, NA) # notenvektor, letzte Note ist nicht bekannt
+notendurchschnitt <- mean(x = noten, na.rm = TRUE)
+notendurchschnitt
+### Median vs Mittelwert
+noten2 <- c(1, 1, 1, 1, 1, 1, 5)
+
+median(x = noten2)
+mean(x = noten2)
+### Mittelwertsfunktion selber schreiben
+meine_noten <- c(2, 5, 1, 1, 4)
+meine_noten
+#### summe bilden
+help(sum)
+summe <- sum(meine_noten)
+summe
+#### anzahl der vektorelemente bestimmen
+help(length)
+anzahl <- length(meine_noten)
+anzahl
+#### mittelwert berechnen
+summe / anzahl
+
+#### funktion schreiben
+##### Input
+meine_noten <- c(2, 5, 1, 1, 4)
+##### Funktionselemente (EVA Prinzip)
+mymean <- function(x) { # x EINGABE
+  summe <- sum(x) # VERARBEITUNG
+  anzahl <- length(x)
+  mittelwert <- summe / anzahl
+  return(mittelwert) # AUSGABE
+}
+View(mymean)
+
+# Eigene Funktion ausprobieren
+noten <- c(1, 2, 3, 4, NA, NA)
+mean(noten, na.rm = TRUE) # standardfunktion
+mymean(noten) # eigene funktion
+
+# Zweite Mittelwertsfunktion, die mit fehlenden Werten NA umgehen kann
+mymean2 <- function(x) { # x EINGABE
+  summe <- sum(x, na.rm = TRUE) # VERARBEITUNG
+  anzahl <- length(x) - sum(is.na(x))
+  mittelwert <- summe / anzahl
+  return(mittelwert) # AUSGABE
+}
+
+mymean2(noten) # kann mit NA umgehen
+mymean(noten)  # kann nicht mit NA umgehen
+
+
+
+
+
+
+
+
