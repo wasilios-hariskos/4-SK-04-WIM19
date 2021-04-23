@@ -54,6 +54,10 @@ gapminder <- gapminder %>% # Zuweisung durch <- , dadurch wird neue Spalte popMM
   mutate(popMM = pop / 1000000)
 
 gapminder
+# select(): Spalten auswählen----
+gapminder %>% 
+  filter(country == "Germany") %>% 
+  select(year, lifeExp, gdpPercap)
 # Verkettung von Funktionen mit dem Pipe Operator %>% ----
 gdp_1997 <- gapminder %>%
   mutate(gdp = gdpPercap * pop) %>%
@@ -272,20 +276,25 @@ ggplot(data = Dataset) +
   geom_histogram(mapping = aes(x = gdpPercap),
                  binwidth = 5) +
   facet_wrap(facets = ~continent)
+
 ## 7: Ein Streudiagramm erstellen
 ### Einkommen versus Lebenserwartung
 scatterplot(lifeExp~gdpPercap, regLine=FALSE, smooth=FALSE, boxplots=FALSE, 
             data=Dataset)
+
 ### Einkommen versus Lebenserwartung für jeden Kontinenten
 scatterplot(lifeExp~gdpPercap | continent, 
             regLine=FALSE, smooth=FALSE, boxplots=FALSE, 
             by.groups=TRUE, data=Dataset)
+
 ## 8: Ein Balkendiagramm erstellen
 with(Dataset, Barplot(continent, xlab="continent", 
                       ylab="Frequency", label.bars=TRUE))
+
 ## 9: Einen Boxplot erstellen
 Boxplot(lifeExp~continent, data=Dataset, 
         id=list(method="y"))
+
 # Vertiefung: Funktionen ----
 ## f(x, y, z), wobei f die Funktion ist sind x, y, z sind Inputs oder Argumente
 ## mean(x, trim = 0, na.rm = FALSE)

@@ -24,7 +24,7 @@ https://moodle.hwr-berlin.de/fb2-stundenplan/stundenplan.php
 + Fr, 16.04.2021 (14:00 - 15:30)
 + Mo, 19.04.2021 (14:00 - 15:30)
 + Fr, 23.04.2021 (14:00 - 15:30)
-+ Fr, 26.04.2021 (14:00 - 14:45)
++ Mo, 26.04.2021 (14:00 - 14:45)
 
 Die Veranstaltungen finden über Big Blue Button statt. Den Link finden Sie im Moodle.
 
